@@ -19,6 +19,8 @@ A local Next.js process uses `RULECMS_DEVELOPMENT_TOKEN` and `RULECMS_WIDGET_KEY
 
 ## Vercel
 
+The app is deployed at [https://test-rulecms-widgets-manually.vercel.app/](https://test-rulecms-widgets-manually.vercel.app/).
+
 Set `RULECMS_PRODUCTION_TOKEN` and `RULECMS_WIDGET_KEY_<SLUG>_PRODUCTION` on the Vercel project. Preview and production deployments both use those Production values.
 
 ## Add a page

@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type TestNotesProps = {
   title: string;
-  details: string;
+  details: ReactNode;
 };
 
 /** Collapsed by default. The summary is the only chrome above the widget. */

@@ -28,7 +28,7 @@ export function ruleCmsToken(
   return value || undefined;
 }
 
-/** EXAMPLE → RULECMS_WIDGET_KEY_EXAMPLE_DEVELOPMENT */
+/** nested-collections → RULECMS_WIDGET_KEY_NESTED_COLLECTIONS_DEVELOPMENT */
 export function widgetKeyEnvName(
   slug: string,
   target: RuleCmsTarget = ruleCmsTarget(),

@@ -4,6 +4,8 @@ Manual Next.js pages that server-render RuleCMS widgets.
 
 The homepage lists scenarios. Each scenario page opens with a collapsed note describing what that page is testing, and the rest of the page is the widget.
 
+Development and Production tokens for this app come from the vishal@rulecms.com account on [rulecms.com](https://rulecms.com), for the team `test_rulecms_widgets_manually`.
+
 ## Run locally
 
 Copy `.env.example` to `.env.local` and set the Development token plus each page's Development widget key.

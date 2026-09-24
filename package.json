@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@rulecms/source-components-react": "^20.21.0",
-    "@rulecms/widget-react": "^22.27.0",
+    "@rulecms/widget-react": "^23.0.0",
     "next": "16.3.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",

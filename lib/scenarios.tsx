@@ -43,7 +43,9 @@ All four show up in that single widget. Collection names and what to look for in
     title: "Text component functionality in one server-rendered widget",
     details: (
       <>
-        {`One widget renders the text component so its authored text can be checked on this page.`}
+        {`One widget renders the text component so its authored text can be checked on this page.
+
+A second text in that widget can read a price the widget does not store. This page passes price as 65 when it renders, and {{ price }} in the text is replaced with that number.`}
         <p>
           Widget name:{" "}
           <a href={textComponentWidgetUrl}>

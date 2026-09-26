@@ -1,5 +1,9 @@
 import "server-only";
-import { RuleCMSWidgetServer } from "@rulecms/widget-react/server";
+import {
+  fetchRuleCMSWidget,
+  RuleCMSWidgetServer,
+} from "@rulecms/widget-react/server";
+import { TextComponentWidget } from "@/components/TextComponentWidget";
 import type { Scenario } from "@/lib/scenarios";
 import {
   ruleCmsTarget,
@@ -13,7 +17,7 @@ const libraries = {
   default: () => import("@rulecms/source-components-react"),
 };
 
-export function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
+export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
   const target = ruleCmsTarget();
   const token = ruleCmsToken(target);
   const publishedKey = widgetKeyForSlug(scenario.slug, target);
@@ -32,15 +36,31 @@ export function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
     );
   }
 
+  if (scenario.slug === "text-component") {
+    try {
+      const initialData = await fetchRuleCMSWidget({
+        token,
+        publishedKey,
+        fetchOptions: { cache: "no-store" },
+      });
+      return (
+        <TextComponentWidget
+          publishedKey={publishedKey}
+          initialData={initialData}
+        />
+      );
+    } catch {
+      return <p>This widget could not be loaded.</p>;
+    }
+  }
+
   return (
     <RuleCMSWidgetServer
       token={token}
       publishedKey={publishedKey}
       libraries={libraries}
       fetchOptions={{ cache: "no-store" }}
-      errorFallback={
-        <p>This widget could not be loaded.</p>
-      }
+      errorFallback={<p>This widget could not be loaded.</p>}
     />
   );
 }

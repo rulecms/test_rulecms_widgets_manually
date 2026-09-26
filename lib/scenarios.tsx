@@ -17,6 +17,9 @@ const textComponentWidgetUrl =
 const collectionDynamicPriceWidgetUrl =
   "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/3021dd09-5304-4a73-8a6e-1363e41a1ccc";
 
+const twoEmbeddedPriceTreesWidgetUrl =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/1145d101-ad67-4456-80b0-336a3fed80b5";
+
 export const scenarios: Scenario[] = [
   {
     slug: "nested-collections",
@@ -72,6 +75,23 @@ The child collection does not store a price. Its text has {{ price }}. This page
           <a href={collectionDynamicPriceWidgetUrl}>
             contains collection with a child collection with a dynamic price
             field
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "two-embedded-price-trees",
+    title: "Two embedded collection trees, each with its own price",
+    details: (
+      <>
+        {`This page renders a second widget, left separate from the single-price collection page.
+
+Each tree is embedded collections nested inside the widget. Neither tree stores a price. Both texts use {{ price }}. This page passes $125 to the first tree and $250 to the second, using each tree's embedding ids.`}
+        <p>
+          Widget name:{" "}
+          <a href={twoEmbeddedPriceTreesWidgetUrl}>
+            contains collection k3L7BE
           </a>
         </p>
       </>

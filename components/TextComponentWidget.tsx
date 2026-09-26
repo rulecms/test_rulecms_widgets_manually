@@ -13,10 +13,14 @@ export function TextComponentWidget({
   publishedKey,
   initialData,
   placeholderValues = defaultPlaceholderValues,
+  componentProps,
 }: {
   publishedKey: string;
   initialData: RuleCMSWidgetData;
   placeholderValues?: unknown;
+  componentProps?: {
+    [columnPath: string]: { placeholderValues?: unknown };
+  };
 }) {
   return (
     <RuleCMSWidget
@@ -25,6 +29,7 @@ export function TextComponentWidget({
       initialData={initialData}
       libraries={libraries}
       placeholderValues={placeholderValues}
+      componentProps={componentProps}
     />
   );
 }

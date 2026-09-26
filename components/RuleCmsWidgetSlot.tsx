@@ -17,6 +17,17 @@ const libraries = {
   default: () => import("@rulecms/source-components-react"),
 };
 
+const priceTextId = "5d7f0604-ddfa-4db4-9d2c-da677faba851";
+const priceChildEmbeddingId = "fed4c349-6dca-478e-bba2-99cdebb8ceba";
+
+/** First tree on the page is $125. Second tree is $250. */
+const twoTreePrices = {
+  [`ddcabae5-0245-47b3-95db-f8fbc872ea26/${priceChildEmbeddingId}/${priceTextId}`]:
+    { placeholderValues: { price: "$125" } },
+  [`e0a36146-d0d5-4358-a70e-5480ed898e0b/${priceChildEmbeddingId}/${priceTextId}`]:
+    { placeholderValues: { price: "$250" } },
+};
+
 export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
   const target = ruleCmsTarget();
   const token = ruleCmsToken(target);
@@ -38,7 +49,8 @@ export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
 
   if (
     scenario.slug === "text-component" ||
-    scenario.slug === "collection-dynamic-price"
+    scenario.slug === "collection-dynamic-price" ||
+    scenario.slug === "two-embedded-price-trees"
   ) {
     try {
       const initialData = await fetchRuleCMSWidget({
@@ -53,6 +65,13 @@ export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
           placeholderValues={
             scenario.slug === "collection-dynamic-price"
               ? { price: "$125" }
+              : scenario.slug === "two-embedded-price-trees"
+                ? null
+                : undefined
+          }
+          componentProps={
+            scenario.slug === "two-embedded-price-trees"
+              ? twoTreePrices
               : undefined
           }
         />

@@ -9,8 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@rulecms/source-components-react": "^20.21.0",
-    "@rulecms/widget-react": "^23.0.1",
+    "@rulecms/source-components-react": "^20.22.0",
+    "@rulecms/widget-react": "^23.1.0",
     "next": "16.3.6",
     "react": "19.2.8",
     "react-dom": "19.2.8",

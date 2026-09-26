@@ -14,6 +14,9 @@ const nestedCollectionsWidgetUrl =
 const textComponentWidgetUrl =
   "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/ca33ecaf-3ea4-496f-b7dc-82f6d84e4425";
 
+const collectionDynamicPriceWidgetUrl =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/3021dd09-5304-4a73-8a6e-1363e41a1ccc";
+
 export const scenarios: Scenario[] = [
   {
     slug: "nested-collections",
@@ -50,6 +53,25 @@ A second text in that widget can read a price the widget does not store. This pa
           Widget name:{" "}
           <a href={textComponentWidgetUrl}>
             widget to test text component functionality
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "collection-dynamic-price",
+    title:
+      "Contains a collection with a child collection with a dynamic price field",
+    details: (
+      <>
+        {`This widget contains a collection, and that collection contains a child collection.
+
+The child collection does not store a price. Its text has {{ price }}. This page passes price as $125 when it renders, and that value is filled in then.`}
+        <p>
+          Widget name:{" "}
+          <a href={collectionDynamicPriceWidgetUrl}>
+            contains collection with a child collection with a dynamic price
+            field
           </a>
         </p>
       </>

@@ -36,7 +36,10 @@ export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
     );
   }
 
-  if (scenario.slug === "text-component") {
+  if (
+    scenario.slug === "text-component" ||
+    scenario.slug === "collection-dynamic-price"
+  ) {
     try {
       const initialData = await fetchRuleCMSWidget({
         token,
@@ -47,6 +50,11 @@ export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
         <TextComponentWidget
           publishedKey={publishedKey}
           initialData={initialData}
+          placeholderValues={
+            scenario.slug === "collection-dynamic-price"
+              ? { price: "$125" }
+              : undefined
+          }
         />
       );
     } catch {

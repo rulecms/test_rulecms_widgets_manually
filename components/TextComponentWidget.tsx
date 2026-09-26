@@ -6,15 +6,17 @@ import * as sourceComponents from "@rulecms/source-components-react";
 
 const libraries = { default: sourceComponents };
 
-/** The widget stores `{{ price }}`. This page supplies the number at render time. */
-const placeholderValues = { price: 65 };
+/** The widget stores `{{ price }}`. The page supplies the value at render time. */
+const defaultPlaceholderValues = { price: 65 };
 
 export function TextComponentWidget({
   publishedKey,
   initialData,
+  placeholderValues = defaultPlaceholderValues,
 }: {
   publishedKey: string;
   initialData: RuleCMSWidgetData;
+  placeholderValues?: unknown;
 }) {
   return (
     <RuleCMSWidget

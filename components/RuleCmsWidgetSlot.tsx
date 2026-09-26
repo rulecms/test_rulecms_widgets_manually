@@ -25,7 +25,7 @@ export function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
     ].filter((name): name is string => name !== null);
 
     return (
-      <p className="px-3 py-2 text-sm text-zinc-600">
+      <p>
         Not configured for the {target} environment. Set {missing.join(" and ")}{" "}
         on the server.
       </p>
@@ -39,9 +39,7 @@ export function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
       libraries={libraries}
       fetchOptions={{ cache: "no-store" }}
       errorFallback={
-        <p className="px-3 py-2 text-sm text-zinc-600">
-          This widget could not be loaded.
-        </p>
+        <p>This widget could not be loaded.</p>
       }
     />
   );

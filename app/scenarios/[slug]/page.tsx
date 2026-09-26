@@ -32,11 +32,9 @@ export default async function ScenarioPage({ params }: ScenarioPageProps) {
   }
 
   return (
-    <div className="flex min-h-full flex-1 flex-col">
+    <>
       <TestNotes title={scenario.title} details={scenario.details} />
-      <div className="min-h-0 flex-1">
-        <RuleCmsWidgetSlot scenario={scenario} />
-      </div>
-    </div>
+      <RuleCmsWidgetSlot scenario={scenario} />
+    </>
   );
 }

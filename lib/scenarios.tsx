@@ -11,6 +11,9 @@ export type Scenario = {
 const nestedCollectionsWidgetUrl =
   "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/f7c73214-df13-442c-bac2-dd02963584e5";
 
+const textComponentWidgetUrl =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/ca33ecaf-3ea4-496f-b7dc-82f6d84e4425";
+
 export const scenarios: Scenario[] = [
   {
     slug: "nested-collections",
@@ -26,10 +29,25 @@ export const scenarios: Scenario[] = [
 - A widget that has embedded collections: the widget embeds collections directly, along with the cases above.
 
 All four show up in that single widget. Collection names and what to look for in the render can be filled in here once they exist.`}
-        <p className="mt-2">
+        <p>
           Widget name:{" "}
-          <a href={nestedCollectionsWidgetUrl} className="underline">
+          <a href={nestedCollectionsWidgetUrl}>
             widget with shared and embedded nested collections
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "text-component",
+    title: "Text component functionality in one server-rendered widget",
+    details: (
+      <>
+        {`One widget renders the text component so its authored text can be checked on this page.`}
+        <p>
+          Widget name:{" "}
+          <a href={textComponentWidgetUrl}>
+            widget to test text component functionality
           </a>
         </p>
       </>

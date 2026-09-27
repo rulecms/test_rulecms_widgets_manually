@@ -108,9 +108,10 @@ function NestedRulesetWidgets({
   token: string | undefined;
 }) {
   const ruleset = nestedRulesetKey();
+  const rulesetKey = ruleset.value;
 
-  if (!token || !ruleset.value) {
-    const names = [!token ? tokenEnvName() : null, !ruleset.value ? ruleset.name : null].filter(
+  if (!token || !rulesetKey) {
+    const names = [!token ? tokenEnvName() : null, !rulesetKey ? ruleset.name : null].filter(
       (name): name is string => name !== null,
     );
     return (
@@ -127,7 +128,7 @@ function NestedRulesetWidgets({
         <RuleCMSWidgetServer
           key={entry.label}
           token={token}
-          rulesetPublishedKey={ruleset.value}
+          rulesetPublishedKey={rulesetKey}
           params={entry.params}
           libraries={libraries}
           fetchOptions={{ cache: "no-store" }}

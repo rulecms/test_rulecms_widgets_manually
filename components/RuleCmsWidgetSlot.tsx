@@ -1,9 +1,5 @@
 import "server-only";
-import {
-  fetchRuleCMSWidget,
-  RuleCMSWidgetServer,
-} from "@rulecms/widget-react/server";
-import { TextComponentWidget } from "@/components/TextComponentWidget";
+import { RuleCMSWidgetServer } from "@rulecms/widget-react/server";
 import type { Scenario } from "@/lib/scenarios";
 import {
   ruleCmsTarget,
@@ -28,6 +24,19 @@ const twoTreePrices = {
     { placeholderValues: { price: "$250" } },
 };
 
+function placeholderValuesFor(slug: string): unknown {
+  if (slug === "text-component") {
+    return { price: 65 };
+  }
+  if (slug === "collection-dynamic-price") {
+    return { price: "$125" };
+  }
+  if (slug === "two-embedded-price-trees") {
+    return null;
+  }
+  return undefined;
+}
+
 export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
   const target = ruleCmsTarget();
   const token = ruleCmsToken(target);
@@ -47,46 +56,16 @@ export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
     );
   }
 
-  if (
-    scenario.slug === "text-component" ||
-    scenario.slug === "collection-dynamic-price" ||
-    scenario.slug === "two-embedded-price-trees"
-  ) {
-    try {
-      const initialData = await fetchRuleCMSWidget({
-        token,
-        publishedKey,
-        fetchOptions: { cache: "no-store" },
-      });
-      return (
-        <TextComponentWidget
-          publishedKey={publishedKey}
-          initialData={initialData}
-          placeholderValues={
-            scenario.slug === "collection-dynamic-price"
-              ? { price: "$125" }
-              : scenario.slug === "two-embedded-price-trees"
-                ? null
-                : undefined
-          }
-          componentProps={
-            scenario.slug === "two-embedded-price-trees"
-              ? twoTreePrices
-              : undefined
-          }
-        />
-      );
-    } catch {
-      return <p>This widget could not be loaded.</p>;
-    }
-  }
-
   return (
     <RuleCMSWidgetServer
       token={token}
       publishedKey={publishedKey}
       libraries={libraries}
       fetchOptions={{ cache: "no-store" }}
+      placeholderValues={placeholderValuesFor(scenario.slug)}
+      componentProps={
+        scenario.slug === "two-embedded-price-trees" ? twoTreePrices : undefined
+      }
       errorFallback={<p>This widget could not be loaded.</p>}
     />
   );

@@ -45,3 +45,17 @@ export function widgetKeyForSlug(
   const value = process.env[widgetKeyEnvName(slug, target)]?.trim();
   return value || undefined;
 }
+
+function readEnv(name: string): string | undefined {
+  const value = process.env[name]?.trim();
+  return value || undefined;
+}
+
+/** Development: `ruleset-…`. Production: `{environmentId}---ruleset-…`. */
+export function localeRulesetKey(
+  target: RuleCmsTarget = ruleCmsTarget(),
+): { name: string; value: string | undefined } {
+  const side = target === "production" ? "PRODUCTION" : "DEVELOPMENT";
+  const name = `RULECMS_RULESET_KEY_LOCALE_RULESET_${side}`;
+  return { name, value: readEnv(name) };
+}

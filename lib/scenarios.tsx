@@ -20,6 +20,12 @@ const collectionDynamicPriceWidgetUrl =
 const twoEmbeddedPriceTreesWidgetUrl =
   "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/1145d101-ad67-4456-80b0-336a3fed80b5";
 
+const localeRulesetGermanWidgetUrl =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/b1df87e5-f514-41dd-b78d-2f1ed8d5b917";
+
+const localeRulesetDefaultWidgetUrl =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/15db4490-4bf4-4657-8673-0376bc02dfe8";
+
 export const scenarios: Scenario[] = [
   {
     slug: "nested-collections",
@@ -93,6 +99,24 @@ Each tree is embedded collections nested inside the widget. Neither tree stores 
           <a href={twoEmbeddedPriceTreesWidgetUrl}>
             contains collection k3L7BE
           </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "locale-ruleset",
+    title: "A ruleset chooses the German widget or the default widget",
+    details: (
+      <>
+        {`Two widgets are the outcomes of one locale ruleset.
+
+The German widget is for locale de-DE. The default widget is for every other locale. This page asks the ruleset twice: once with locale de-DE, and once with locale en-US.`}
+        <p>
+          German widget: <a href={localeRulesetGermanWidgetUrl}>German widget</a>
+        </p>
+        <p>
+          Default widget:{" "}
+          <a href={localeRulesetDefaultWidgetUrl}>Default widget</a>
         </p>
       </>
     ),

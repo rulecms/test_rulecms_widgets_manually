@@ -2,6 +2,7 @@ import "server-only";
 import { RuleCMSWidgetServer } from "@rulecms/widget-react/server";
 import type { Scenario } from "@/lib/scenarios";
 import {
+  localeRulesetKey,
   ruleCmsTarget,
   ruleCmsToken,
   tokenEnvName,
@@ -37,9 +38,55 @@ function placeholderValuesFor(slug: string): unknown {
   return undefined;
 }
 
+function LocaleRulesetWidgets({
+  token,
+}: {
+  token: string | undefined;
+}) {
+  const ruleset = localeRulesetKey();
+
+  if (!token || !ruleset.value) {
+    const names = [!token ? tokenEnvName() : null, !ruleset.value ? ruleset.name : null].filter(
+      (name): name is string => name !== null,
+    );
+    return (
+      <p>
+        Not configured for the {ruleCmsTarget()} environment. Set{" "}
+        {names.join(" and ")} on the server.
+      </p>
+    );
+  }
+
+  return (
+    <>
+      <RuleCMSWidgetServer
+        token={token}
+        rulesetPublishedKey={ruleset.value}
+        params={{ locale: "de-DE" }}
+        libraries={libraries}
+        fetchOptions={{ cache: "no-store" }}
+        errorFallback={<p>The German locale could not be resolved.</p>}
+      />
+      <RuleCMSWidgetServer
+        token={token}
+        rulesetPublishedKey={ruleset.value}
+        params={{ locale: "en-US" }}
+        libraries={libraries}
+        fetchOptions={{ cache: "no-store" }}
+        errorFallback={<p>The other locale could not be resolved.</p>}
+      />
+    </>
+  );
+}
+
 export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
   const target = ruleCmsTarget();
   const token = ruleCmsToken(target);
+
+  if (scenario.slug === "locale-ruleset") {
+    return <LocaleRulesetWidgets token={token} />;
+  }
+
   const publishedKey = widgetKeyForSlug(scenario.slug, target);
 
   if (!token || !publishedKey) {

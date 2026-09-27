@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { HowWidgetIsCalled } from "@/components/HowWidgetIsCalled";
 import { RuleCmsWidgetSlot } from "@/components/RuleCmsWidgetSlot";
 import { TestNotes } from "@/components/TestNotes";
 import { getScenario, scenarios } from "@/lib/scenarios";
@@ -34,6 +35,7 @@ export default async function ScenarioPage({ params }: ScenarioPageProps) {
   return (
     <>
       <TestNotes title={scenario.title} details={scenario.details} />
+      <HowWidgetIsCalled slug={scenario.slug} />
       <RuleCmsWidgetSlot scenario={scenario} />
     </>
   );

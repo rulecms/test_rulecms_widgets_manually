@@ -9,22 +9,22 @@ export type Scenario = {
 };
 
 const nestedCollectionsWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/f7c73214-df13-442c-bac2-dd02963584e5";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/f7c73214-df13-442c-bac2-dd02963584e5";
 
 const textComponentWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/ca33ecaf-3ea4-496f-b7dc-82f6d84e4425";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/ca33ecaf-3ea4-496f-b7dc-82f6d84e4425";
 
 const collectionDynamicPriceWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/3021dd09-5304-4a73-8a6e-1363e41a1ccc";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/3021dd09-5304-4a73-8a6e-1363e41a1ccc";
 
 const twoEmbeddedPriceTreesWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/1145d101-ad67-4456-80b0-336a3fed80b5";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/1145d101-ad67-4456-80b0-336a3fed80b5";
 
 const localeRulesetGermanWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/b1df87e5-f514-41dd-b78d-2f1ed8d5b917";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/b1df87e5-f514-41dd-b78d-2f1ed8d5b917";
 
 const localeRulesetDefaultWidgetUrl =
-  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/b35446f1-4661-4194-af57-6ec87a7b94b7/widgets/15db4490-4bf4-4657-8673-0376bc02dfe8";
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/15db4490-4bf4-4657-8673-0376bc02dfe8";
 
 export const scenarios: Scenario[] = [
   {

@@ -26,6 +26,9 @@ const localeRulesetGermanWidgetUrl =
 const localeRulesetDefaultWidgetUrl =
   "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets/15db4490-4bf4-4657-8673-0376bc02dfe8";
 
+const nestedRulesetAppBase =
+  "https://rulecms.com/app/d/orgs/75ef64a0-2e59-4c10-864d-e6a24704baf4/t/6ce05d39-3efb-41e7-bf42-66e8b3a2ec58/p/ba3bfabc-96d1-4d99-ae41-29c8c5af429b/e/0d872a3b-f98d-4051-a949-ffcb95834816/widgets";
+
 export const scenarios: Scenario[] = [
   {
     slug: "nested-collections",
@@ -117,6 +120,41 @@ The German widget is for locale de-DE. The default widget is for every other loc
         <p>
           Default widget:{" "}
           <a href={localeRulesetDefaultWidgetUrl}>Default widget</a>
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "nested-ruleset",
+    title: "A ruleset reads nested user and cart fields",
+    details: (
+      <>
+        {`Four widgets are the outcomes of one nested ruleset.
+
+The page sends user.plan, user.lastPurchaseAt, and cart.value inside one object. It asks the ruleset four times: Pro plan, a cart of 100, a purchase on 2026-06-01, and a free plan with a small cart. Rules run in that order, and the last case uses the default.`}
+        <p>
+          Pro plan:{" "}
+          <a href={`${nestedRulesetAppBase}/9478fd05-9128-465d-91ef-76beae190e5c`}>
+            Pro plan
+          </a>
+        </p>
+        <p>
+          High cart:{" "}
+          <a href={`${nestedRulesetAppBase}/97e0bd18-986d-488e-b03e-c998639fc41a`}>
+            High cart
+          </a>
+        </p>
+        <p>
+          Recent purchase:{" "}
+          <a href={`${nestedRulesetAppBase}/9df39f41-dc78-4efa-96fd-020bad4b4f73`}>
+            Recent purchase
+          </a>
+        </p>
+        <p>
+          Default:{" "}
+          <a href={`${nestedRulesetAppBase}/212b8685-75ee-4fac-b71e-f20239e2943e`}>
+            Default
+          </a>
         </p>
       </>
     ),

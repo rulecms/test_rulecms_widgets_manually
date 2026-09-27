@@ -3,6 +3,7 @@ import { RuleCMSWidgetServer } from "@rulecms/widget-react/server";
 import type { Scenario } from "@/lib/scenarios";
 import {
   localeRulesetKey,
+  nestedRulesetKey,
   ruleCmsTarget,
   ruleCmsToken,
   tokenEnvName,
@@ -79,12 +80,74 @@ function LocaleRulesetWidgets({
   );
 }
 
+const nestedRulesetCases = [
+  {
+    label: "The Pro plan case",
+    params: { user: { plan: "pro" }, cart: { value: 10 } },
+  },
+  {
+    label: "The high-cart case",
+    params: { user: { plan: "free" }, cart: { value: 100 } },
+  },
+  {
+    label: "The recent-purchase case",
+    params: {
+      user: { plan: "free", lastPurchaseAt: "2026-06-01T00:00:00Z" },
+      cart: { value: 10 },
+    },
+  },
+  {
+    label: "The default case",
+    params: { user: { plan: "free" }, cart: { value: 10 } },
+  },
+];
+
+function NestedRulesetWidgets({
+  token,
+}: {
+  token: string | undefined;
+}) {
+  const ruleset = nestedRulesetKey();
+
+  if (!token || !ruleset.value) {
+    const names = [!token ? tokenEnvName() : null, !ruleset.value ? ruleset.name : null].filter(
+      (name): name is string => name !== null,
+    );
+    return (
+      <p>
+        Not configured for the {ruleCmsTarget()} environment. Set{" "}
+        {names.join(" and ")} on the server.
+      </p>
+    );
+  }
+
+  return (
+    <>
+      {nestedRulesetCases.map((entry) => (
+        <RuleCMSWidgetServer
+          key={entry.label}
+          token={token}
+          rulesetPublishedKey={ruleset.value}
+          params={entry.params}
+          libraries={libraries}
+          fetchOptions={{ cache: "no-store" }}
+          errorFallback={<p>{entry.label} could not be resolved.</p>}
+        />
+      ))}
+    </>
+  );
+}
+
 export async function RuleCmsWidgetSlot({ scenario }: { scenario: Scenario }) {
   const target = ruleCmsTarget();
   const token = ruleCmsToken(target);
 
   if (scenario.slug === "locale-ruleset") {
     return <LocaleRulesetWidgets token={token} />;
+  }
+
+  if (scenario.slug === "nested-ruleset") {
+    return <NestedRulesetWidgets token={token} />;
   }
 
   const publishedKey = widgetKeyForSlug(scenario.slug, target);

@@ -52,6 +52,15 @@ function readEnv(name: string): string | undefined {
 }
 
 /** Development: `ruleset-…`. Production: `{environmentId}---ruleset-…`. */
+export function nestedRulesetKey(
+  target: RuleCmsTarget = ruleCmsTarget(),
+): { name: string; value: string | undefined } {
+  const side = target === "production" ? "PRODUCTION" : "DEVELOPMENT";
+  const name = `RULECMS_RULESET_KEY_NESTED_RULESET_${side}`;
+  return { name, value: readEnv(name) };
+}
+
+/** Development: `ruleset-…`. Production: `{environmentId}---ruleset-…`. */
 export function localeRulesetKey(
   target: RuleCmsTarget = ruleCmsTarget(),
 ): { name: string; value: string | undefined } {
